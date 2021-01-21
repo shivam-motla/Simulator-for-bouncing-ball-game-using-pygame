@@ -1,0 +1,427 @@
+<!DOCTYPE HTML> 
+<html> 
+  
+<head> 
+    <title> 
+        Bouncing Ball
+    </title> 
+    <link href="bouncing_ball.css" rel="stylesheet" type="text/css"/>
+  
+</head> 
+  
+<body> 
+<div id="header" style="height:49px; text-align: center;font-family: serif;font-size: 30px "> Bouncing Ball </div>
+<div class="executionDivision">
+    <div class="executionDivisionTitle"><div class="executionPic"></div><div class="executionText">Input Parameters</div></div>
+
+<div id="selection_div" class="show">
+
+<div style="float: left; height: 40px; width: 100%; text-align: center;     font-family: cursive;
+    font-size: 20px;">Select any ball</div>
+<div class="ball_class"><img src="vollyball.png" height="120" width="120" ></img></div>
+<div class="ball_class"><img src="football.png" height="120" width="120" ></img></div>
+<div class="ball_class"><img src="basketball.png" height="120" width="120" ></img></div>
+<div class="ball_class"><img src="baseball.png" height="120" width="120" ></img></div>
+<div style="float: left; height: 40px; width: 100%;">
+    &emsp;&emsp;&emsp;&emsp;
+    <input type="radio" name="ball__" value="vollyball"></input>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
+    <input type="radio" name="ball__" value="football"></input>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+    <input type="radio" name="ball__" value="basketball"></input>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+    <input type="radio" name="ball__" value="baseball"></input>
+</div>
+
+<div style="float: left; height: 40px; width: 100%; text-align: center;    font-family: cursive;
+    font-size: 20px;">Select any board</div>
+<div class="bg_class"><img src="bg04.jpg" height="170" width="270"></img></div>
+<div class="bg_class"><img src="bg01.png" height="170" width="270"></img></div>
+<div style="float: left; height: 40px; width: 100%;">
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+    <input type="radio" name="bg__" value="bg4"></input>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+    <input type="radio" name="bg__" value="bg1"></input>
+</div>
+
+<div class="bg_class"><img src="bg02.jpg" height="170" width="270"></img></div>
+<div class="bg_class"><img src="bg03.jpg" height="170" width="270"></img></div>
+<div style="float: left; height: 40px; width: 100%;">
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+    <input type="radio" name="bg__" value="bg2"></input>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+    <input type="radio" name="bg__" value="bg3"></input>
+</div>
+<div style="float: left; height: 40px; width: 100%; text-align: center;"><button class="button" onclick="clickNext()">Next</button></div>
+</div>
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+<div id="para_div" class="hide" >
+    <div class="line">&nbsp</div>
+    <div style="float: left; height: 40px; width: 100%; text-align: center;"></div>
+
+<!--     <div>
+        <label for="volume">Volume</label>
+        <input type="range" id="volume" name="volume"
+         min="0" max="11">
+        
+     </div> -->
+         <div style="margin-left: 103px;
+    margin-top: 160px;">
+        <div style="font-family: cursive;
+    font-size: 22px;">Size of ball:</div>
+      <input type="range" id="size__"  
+             min="20" max="60" step="10" value="50" </input>
+</div>
+
+         <div style="float: left;
+    margin-top: 50px;
+    margin-left: 103px;">
+        <div style="font-family: cursive;
+    font-size: 22px;">Speed:</div>
+      <input type="range" id="speed__"  
+             min="4" max="20" step="1" </input>
+</div>
+
+
+
+    <div style="max-width=489px; transform: rotate(270deg); float: right;margin-right: 160px;">
+        <div style="font-family: cursive;font-size: 22px;">Direction</div>
+        <!-- <label for="cowbell">Cowbell</label> -->
+      <input type="range" id="direction__" class="slider-square"  
+             min="1" max="7" step="1" value="2"></input>
+</div>
+<!-- <div style="max-width: fit-content;max-height: fit-content;margin-left: 295px;margin-top: -71px; float: right;"> --><img src="arr.png" width="125" height="325" style="    margin-left: 170px;
+    margin-top: -192px;"><!-- </div> -->
+<div style="float: left; height: 40px; width: 100%; text-align: center;"><button class="button" onclick="clickStart()">Start</button></div>
+</div>
+
+</div>
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+<!-- <div id="code_div" class="hide">
+
+    <div class="line">&nbsp</div>
+    <div class="line">import sys, pygame</div>
+    <div class="line">import time</div>
+    <div class="line">pygame.init()</div>
+
+    <div class="line">size = width, height = 800, 400</div>
+
+    <div class="line">speed = [1,1]</div>
+
+    <div class="line">screen = pygame.display.set_mode(size)</div>
+
+    <div class="line">pygame.display.set_caption("Bouncing ball")</div>
+    <div class="line">bg=pygame.image.load("bg03.jpg")</div>
+    <div class="line">bg=pygame.transform.scale(bg, (800, 400))</div>
+    <div class="line">ball = pygame.image.load("vollyball.png")</div>
+    <div class="line">ball = pygame.transform.scale(ball, (40, 40))</div>
+    <div class="line">ballrect = ball.get_rect()</div>
+    <div class="line">bgrect=bg.get_rect()</div>
+    <div class="line">ballrect.x=0;</div>
+    <div class="line">ballrect.y=160;</div>
+    <div class="line">while 1:</div>
+    <div class="line" style="padding-left:5%;">    time.sleep(0.0009)</div>
+    <div class="line" style="padding-left:5%;">    for event in pygame.event.get():</div>
+    <div class="line" style="padding-left:10%;">        if event.type == pygame.QUIT:</div>
+    <div class="line" style="padding-left:15%;">            sys.exit()</div>
+    <div class="line"></div>
+    <div class="line" style="padding-left:5%;">    ballrect = ballrect.move(speed)</div>
+    <div class="line" style="padding-left:5%;">    if ballrect.left < 0 or ballrect.right > width:</div>
+    <div class="line" style="padding-left:10%;">        speed[0] = -speed[0]</div>
+    <div class="line"></div>
+    <div class="line" style="padding-left:5%;">    if ballrect.top < 0 or ballrect.bottom > height:</div>
+    <div class="line" style="padding-left:10%;">        speed[1] = -speed[1]</div>
+    <div class="line"></div>
+    <div class="line" style="padding-left:5%;">    screen.blit(bg,bgrect)</div>
+    <div class="line" style="padding-left:5%;">    screen.blit(ball,ballrect)</div>
+    <div class="line">    </div>
+    <div class="line" style="padding-left:5%;">    pygame.display.flip()</div>
+
+</div> end of stepExecutionDisplay --> 
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+
+</div><!-- end of executionDivision -->
+<!--#####################################-->
+
+<div class="outputDivision"> 
+    <div class="outputDivisionTitle" style="max-height: 82px"><div class="outputPic"></div><div class="outputText">Code Output</div></div>
+    <div class="resultDisplay hide" id="resultDisplay">
+
+                <canvas> 
+        </canvas>
+
+    </div><!-- end of resultDisplay -->
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+<style type="text/css">title{ color: red; font: 12px tahoma;} 
+</style>
+
+<!-- ***************************************************************************************** -->
+<div id="code_div" class="show">
+
+    <div class="line">&nbsp</div>
+    <div id="line1"class="line_">import sys, pygame,time</div>
+    <div id="desc1" class="desc_ hide">including modules to python code</div>
+    <div id="line2"class="line_">pygame.init()</div>
+    <div id="desc2" class="desc_ hide">initializing pygame module to access its functions</div>
+    <div id="line3" class="line_">size = width, height = 800, 400</div>
+    <div id="desc3" class="desc_ hide">size of board(Playing area)</div>
+    <div id="line4" class="line_">speed = [1,1]</div>
+
+    <div id="desc4" class="desc_ hide">setting speed to initial value</div>
+
+    <div id="line" class="line_">screen = pygame.display.set_mode(size)</div>
+
+    <div id="line" class="line_">pygame.display.set_caption("Bouncing ball")</div>
+        <div id="desc6" class="desc_ hide">Setting windows caption</div>
+    <div id="line7" class="line_">bg=pygame.image.load("bg03.jpg")</div>
+    <div id="desc7" class="desc_ hide">Setting image to background</div>
+
+    <div id="line8" class="line_">bg=pygame.transform.scale(bg, (800, 400))</div>
+        <div id="desc8" class="desc_ hide">resizes the pixels for background
+<img src="bg_transform.png" style="height: 300px;
+    width: 400px;"></img>
+        </div>
+    <div id="line9" class="line_">ball = pygame.image.load("vollyball.png")</div>
+    <div id="desc9" class="desc_ hide">Setting ball's image</div>
+    <div id="line10" class="line_">ball = pygame.transform.scale(ball, (40, 40))</div>
+    <div id="desc10" class="desc_ hide">resizes the pixels for ball nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<img src="ball_transform.png" style="height: 300px;
+    width: 325px;"></img>
+
+    </div>
+
+    <div id="line11" class="line_">ballrect = ball.get_rect()</div>
+    <div id="desc11" class="desc_ hide">setting boundary around the rectangle consisting ball
+<img src="rect.png" style="height: 300px;
+    width: 300px;"></img>
+    </div>
+    <div id="line12" class="line_">bgrect=bg.get_rect()</div>
+        <div id="desc12" class="desc_ hide">setting boundary around the rectangle consisting background(playing area)</div>
+    <div id="line13" class="line_">ballrect.x=0;</div>
+        <div id="desc13" class="desc_ hide">setting initial position of ball on x-axis</div>
+    <div id="line14" class="line_">ballrect.y=160;</div>
+    <div id="desc14" class="desc_ hide">setting initial position of ball on y-axis</div>
+    <div id="line15" class="line_">while 1:</div>
+        <div id="desc15" class="desc_ hide">start of infinite loop&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<img src="infinite.png" style="height: 150px;
+    width: 300px;"></img>
+        </div>
+    <div id="line16" class="line_" style="padding-left:5%;">    time.sleep(0.0009)</div>
+        <div id="desc16" class="desc_ hide">it is used to halt the code till the specified time
+<img src="clock1.png" style="height: 300px;
+    width: 250px;"></img>
+        </div>
+    <div id="line17" class="line_" style="padding-left:5%;">    for event in pygame.event.get():</div>
+        <div id="desc17" class="desc_ hide">it line up all the events to be occured</div>
+    <div id="line18" class="line_" style="padding-left:10%;">        if event.type == pygame.QUIT:</div>
+        <div id="desc18" class="desc_ hide">Quitting condition.&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<img src="exit.png" style="height: 300px;
+    width: 300px;"></img>
+        </div>
+    <div id="line19" class="line_" style="padding-left:15%;">            sys.exit()</div>
+        <div id="desc19" class="desc_ hide">to exit the program at any stage</div>
+    <div id="line" class="line_"></div>
+
+    <div id="line20" class="line_" style="padding-left:5%;">    ballrect = ballrect.move(speed)</div>
+        <div id="desc20" class="desc_ hide">basic movement by ball</div>
+    <div id="line21" class="line_" style="padding-left:5%;">    if ballrect.left < 0 or ballrect.right > width:</div>
+        <div id="desc21" class="desc_ hide">condition for ball when it hits either left or right wall
+
+<img src="left.png" style="height: 300px;
+    width: 300px;"></img>
+<img src="right.png"  style="height: 300px;
+    width: 300px;"></img>
+
+        </div>
+    <div id="line22" class="line_" style="padding-left:10%;">        speed[0] = -speed[0]</div>
+        <div id="desc22" class="desc_ hide">change in direction of movement</div>
+    <div id="line" class="line_"></div>
+    <div id="line23" class="line_" style="padding-left:5%;">    if ballrect.top < 0 or ballrect.bottom > height:</div>
+        <div id="desc23" class="desc_ hide">condition for ball when it hits either top or bottom wall
+
+<img src="up.png" style="height: 300px;
+    width: 300px;"></img>
+<img src="down.png" style="height: 300px;
+    width: 300px;"></img>
+
+        </div>
+    <div id="line24" class="line_" style="padding-left:10%;">        speed[1] = -speed[1]</div>
+        <div id="desc24" class="desc_ hide">change in direction of movement</div>
+    <div id="line" class="line_"></div>
+    <div id="line" class="line_" style="padding-left:5%;">    screen.blit(bg,bgrect)</div>
+    <div id="line25" class="line_" style="padding-left:5%;">    screen.blit(ball,ballrect)</div>
+        <div id="desc25" class="desc_ hide">blit() is used to draw image on given coordinates
+<img src="draw.png" style="height: 300px;
+    width: 300px;"></img>
+</div>
+
+    <div id="line" class="line_">    </div>
+    <div id="line" class="line_" style="padding-left:5%;">    pygame.display.flip()</div>
+
+</div>
+
+<!-- ***************************************************************************************** -->
+<!-- <div id="code_div" class="hide">
+    <div class="line">&nbsp</div>
+    <div id="line1" title="including modules to python code" class="line">import sys, pygame</div>
+    <div class="line">import time</div>
+    <div class="line">pygame.init()</div>
+
+    <div class="line">size = width, height = 800, 400</div>
+
+    <div class="line">speed = [1,1]</div>
+
+    <div class="line">screen = pygame.display.set_mode(size)</div>
+
+    <div class="line">pygame.display.set_caption("Bouncing ball")</div>
+    <div class="line">bg=pygame.image.load("bg03.jpg")</div>
+    <div class="line">bg=pygame.transform.scale(bg, (800, 400))</div>
+    <div class="line">ball = pygame.image.load("vollyball.png")</div>
+    <div class="line">ball = pygame.transform.scale(ball, (40, 40))</div>
+    <div class="line">ballrect = ball.get_rect()</div>
+    <div class="line">bgrect=bg.get_rect()</div>
+    <div class="line">ballrect.x=0;</div>
+    <div class="line">ballrect.y=160;</div>
+    <div class="line">while 1:</div>
+    <div class="line" style="padding-left:5%;">    time.sleep(0.0009)</div>
+    <div class="line" style="padding-left:5%;">    for event in pygame.event.get():</div>
+    <div class="line" style="padding-left:10%;">        if event.type == pygame.QUIT:</div>
+    <div class="line" style="padding-left:15%;">            sys.exit()</div>
+    <div class="line"></div>
+    <div class="line" style="padding-left:5%;">    ballrect = ballrect.move(speed)</div>
+    <div class="line" style="padding-left:5%;">    if ballrect.left < 0 or ballrect.right > width:</div>
+    <div class="line" style="padding-left:10%;">        speed[0] = -speed[0]</div>
+    <div class="line"></div>
+    <div class="line" style="padding-left:5%;">    if ballrect.top < 0 or ballrect.bottom > height:</div>
+    <div class="line" style="padding-left:10%;">        speed[1] = -speed[1]</div>
+    <div class="line"></div>
+    <div class="line" style="padding-left:5%;">    screen.blit(bg,bgrect)</div>
+    <div class="line" style="padding-left:5%;">    screen.blit(ball,ballrect)</div>
+    <div class="line">    </div>
+    <div class="line" style="padding-left:5%;">    pygame.display.flip()</div>
+</div> -->
+<!-- ***************************************************************************************** -->
+<!-- <div id="code_div2" class="hide">
+
+
+    <div class="resultDisplay " id="resultDisplay" style="text-align: initial;">
+    
+    <div class="line" title="including modules to python code">import sys, pygame</div>
+    <div class="line" title="including modules to python code">import time</div>
+    <div class="line" title="initializing pygame module to acess its functions">pygame.init()</div>
+
+    <div class="line" title="size of board(Playing area)">size = width, height = 800, 400</div>
+
+    <div class="line" title="setting speed to initial value">speed = [1,1]</div>
+
+    <div class="line" title="it sets the play stage">screen = pygame.display.set_mode(size)</div>
+
+    <div class="line" title="Setting windows caption">pygame.display.set_caption("Bouncing ball")</div>
+    <div class="line" title="Setting image to background">bg=pygame.image.load("bg03.jpg")</div>
+    <div class="line" title="resizes the pixels for background">bg=pygame.transform.scale(bg, (800, 400))</div>
+    <div class="line" title="Setting ball's image">ball = pygame.image.load("vollyball.png")</div>
+    <div class="line" title="resizes the pixels for ball">ball = pygame.transform.scale(ball, (40, 40))</div>
+    <div class="line" title="setting boundary around the rectangle consisting ball">ballrect = ball.get_rect()</div>
+    <div class="line" title="setting boundary around the rectangle consisting background(playing aea)">bgrect=bg.get_rect()</div>
+    <div class="line" title="setting initial position of ball">ballrect.x=0;</div>
+    <div class="line" title="setting initial position of ball">ballrect.y=160;</div>
+    <div class="line" title="start of infinite loop">while 1:</div>
+    <div class="line" style="padding-left:5%;" title="it is used to halt the code till the specified time">    time.sleep(0.0009)</div>
+    <div class="line" style="padding-left:5%;"  title="it line up all the events to be occured">    for event in pygame.event.get():</div>
+    <div class="line" style="padding-left:10%;"  title="Quitting condition">        if event.type == pygame.QUIT:</div>
+    <div class="line" style="padding-left:15%;"  title="to exit the program at any stage">            sys.exit()</div>
+    <div class="line"></div>
+    <div class="line" style="padding-left:5%;"  title="basic movement by ball">    ballrect = ballrect.move(speed)</div>
+    <div class="line" style="padding-left:5%;"  title="condition for ball when it hits either left or right wall">    if ballrect.left < 0 or ballrect.right > width:</div>
+    <div class="line" style="padding-left:10%;" title="change in direction of movement">        speed[0] = -speed[0]</div>
+    <div class="line"></div>
+    <div class="line" style="padding-left:5%;" title="condition for ball when it hits either top or bottom wall">    if ballrect.top < 0 or ballrect.bottom > height:</div>
+    <div class="line" style="padding-left:10%;" title="change in direction of movement">        speed[1] = -speed[1]</div>
+    <div class="line"></div>
+    <div class="line" style="padding-left:5%;" title="change in direction of movement">>    screen.blit(bg,bgrect)</div>
+    <div class="line" style="padding-left:5%;">    screen.blit(ball,ballrect)</div>
+    <div class="line">    </div>
+    <div class="line" style="padding-left:5%;">    pygame.display.flip()</div>
+</div> -->
+<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&777 -->
+<!-- <div id="code_only" style="width: 54%;
+    margin-left: 14px;"> -->
+<!--     <div class="line">&nbsp</div>
+    <div id="line1" title="including modules to python code" class="line">import sys, pygame</div>
+    <div class="line">import time</div>
+    <div class="line">pygame.init()</div>
+
+    <div class="line">size = width, height = 800, 400</div>
+
+    <div class="line">speed = [1,1]</div>
+
+    <div class="line">screen = pygame.display.set_mode(size)</div>
+
+    <div class="line">pygame.display.set_caption("Bouncing ball")</div>
+    <div class="line">bg=pygame.image.load("bg03.jpg")</div>
+    <div class="line">bg=pygame.transform.scale(bg, (800, 400))</div>
+    <div class="line">ball = pygame.image.load("vollyball.png")</div>
+    <div class="line">ball = pygame.transform.scale(ball, (40, 40))</div>
+    <div class="line">ballrect = ball.get_rect()</div>
+    <div class="line">bgrect=bg.get_rect()</div>
+    <div class="line">ballrect.x=0;</div>
+    <div class="line">ballrect.y=160;</div>
+    <div class="line">while 1:</div>
+    <div class="line" style="padding-left:5%;">    time.sleep(0.0009)</div>
+    <div class="line" style="padding-left:5%;">    for event in pygame.event.get():</div>
+    <div class="line" style="padding-left:10%;">        if event.type == pygame.QUIT:</div>
+    <div class="line" style="padding-left:15%;">            sys.exit()</div>
+    <div class="line"></div>
+    <div class="line" style="padding-left:5%;">    ballrect = ballrect.move(speed)</div>
+    <div class="line" style="padding-left:5%;">    if ballrect.left < 0 or ballrect.right > width:</div>
+    <div class="line" style="padding-left:10%;">        speed[0] = -speed[0]</div>
+    <div class="line"></div>
+    <div class="line" style="padding-left:5%;">    if ballrect.top < 0 or ballrect.bottom > height:</div>
+    <div class="line" style="padding-left:10%;">        speed[1] = -speed[1]</div>
+    <div class="line"></div>
+    <div class="line" style="padding-left:5%;">    screen.blit(bg,bgrect)</div>
+    <div class="line" style="padding-left:5%;">    screen.blit(ball,ballrect)</div>
+    <div class="line">    </div>
+    <div class="line" style="padding-left:5%;">    pygame.display.flip()</div>
+</div> -->
+<!-- <div id="code_desc">
+   
+   
+    <div id="desc1" class="desc_ hide">including modules to python code</div>
+    <div id="desc2" class="desc_ hide">initializing pygame module to access its functions</div>
+    <div id="desc3" class="desc_ hide">size of board(Playing area)</div>
+    <div id="desc4" class="desc_ hide">setting speed to initial value</div>
+    <div id="desc5" class="desc_ hide">it sets the play stage</div>
+    <div id="desc6" class="desc_ hide">Setting windows caption</div>
+    <div id="desc7" class="desc_ hide">Setting image to background</div>
+    <div id="desc8" class="desc_ hide">resizes the pixels for background</div>
+    <div id="desc9" class="desc_ hide">Setting ball's image</div>
+    <div id="desc10" class="desc_ hide">resizes the pixels for ball</div>
+    <div id="desc11" class="desc_ hide">setting boundary around the rectangle consisting ball</div>
+    <div id="desc12" class="desc_ hide">setting boundary around the rectangle consisting background(playing area)</div>
+    <div id="desc13" class="desc_ hide">setting initial position of ball</div>
+    <div id="desc14" class="desc_ hide">setting initial position of ball</div>
+    <div id="desc15" class="desc_ hide">start of infinite loop</div>
+    <div id="desc16" class="desc_ hide">it is used to halt the code till the specified time</div>
+    <div id="desc17" class="desc_ hide">it line up all the events to be occured</div>
+    <div id="desc18" class="desc_ hide">Quitting condition</div>
+    <div id="desc19" class="desc_ hide">to exit the program at any stage</div>
+    <div id="desc20" class="desc_ hide">basic movement by ball</div>
+    <div id="desc21" class="desc_ hide">condition for ball when it hits either left or right wall</div>
+    <div id="desc22" class="desc_ hide">change in direction of movement</div>
+    <div id="desc23" class="desc_ hide">condition for ball when it hits either top or bottom wall</div>
+    <div id="desc24" class="desc_ hide">change in direction of movement</div>
+    <div id="desc25" class="desc_ hide">change in direction of movement</div>
+ -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4$$ -->
+</div><!-- end of outputDivision -->
+ 
+
+
+    <script src="bouncing_ball.js"></script> 
+
+</body> 
+  
+</html> 
